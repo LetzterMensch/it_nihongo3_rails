@@ -4,7 +4,10 @@
   <strong>Title:</strong>
   <%= @book.title %>
 </p>
-
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag(@book.image, style: 'width:200px;height:150px') %>
+  </p>
 <p>
   <strong>Number of pages:</strong>
   <%= @book.number_of_pages %>

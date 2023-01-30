@@ -20,7 +20,14 @@
     <%= form.label :number_of_pages %>
     <%= form.number_field :number_of_pages %>
   </div>
-
+    
+    <div>
+        <% if book.image.attached? %>
+            <%= image_tag book.image, style: "width: 200px; display: block" %>
+        <% end %>
+        <%= form.label :image %>
+        <%= form.file_field :image %>
+    </div>
   <div class="actions">
     <%= form.submit %>
   </div>
