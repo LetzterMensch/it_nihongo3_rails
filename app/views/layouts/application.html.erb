@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Thefirstrails</title>
+    <title>HOME PAGE</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,7 +10,21 @@
   </head>
     
   <body>
+          <table>
+        <tr>
+            <% if user_signed_in? %>
+            <td>Welcome, <%= current_user.email %></td>
+            <td><%= button_to "Log Out", destroy_user_session_path, method: :delete  %></td>
+            <% else %>
+            <td>
+                <%= link_to "Login", new_user_session_path, class:"btn btn-default mb-2 lg:mr-2 lg:mb-0 block" %>
+                <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-default block" %>
+            </td>
+            <% end %>
+        </tr>
+    </table>
      <%= yield %>
-     <h1>HOME PAGE</h1>
+     <h1><a href="/">HOME PAGE</a></h1>
+     <p><a href="/books">View Books</a></p>
   </body>
 </html>
