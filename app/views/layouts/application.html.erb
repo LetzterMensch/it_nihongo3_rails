@@ -13,7 +13,7 @@
           <table>
         <tr>
             <% if user_signed_in? %>
-            <td>Welcome, <%= current_user.email %></td>
+            <td>Welcome, <a href="/users/show.html"><%= current_user.email %></a></td>
             <td><%= button_to "Log Out", destroy_user_session_path, method: :delete  %></td>
             <% else %>
             <td>
