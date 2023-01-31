@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   get 'static_pages/home'
   resources :books, :static_pages
   root to: "static_pages#home"
