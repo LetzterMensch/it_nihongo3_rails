@@ -5,3 +5,7 @@
 <p><%= current_user.email %></p>
 <b>Name: </b><%= current_user.name %><br>
 <b>Age: </b><%= current_user.age %><br>
+ <p>
+    <strong>Avatar:</strong>
+    <%= image_tag(current_user.avatar, style: 'width:200px;height:150px') %>
+ </p>
