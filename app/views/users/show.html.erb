@@ -1,11 +1,31 @@
-<div style="border-top : 1px solid">
+<div style="
+    border-top : 1px solid; 
+    ">
 </div>
 <h1>Profile</h1>
 <b>Mail address :</b>
 <p><%= current_user.email %></p>
 <b>Name: </b><%= current_user.name %><br>
 <b>Age: </b><%= current_user.age %><br>
- <p>
-    <strong>Avatar:</strong>
-    <%= image_tag(current_user.avatar, style: 'width:200px;height:150px') %>
+ <p style="img {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+      width: 150px;
+    };
+    img:hover {
+      box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+    };">
+    <strong>Avatar:</strong><br>
+    <%= image_tag(current_user.avatar, style: '
+    width:200px;height:150px;
+    img {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+      width: 150px;
+    };
+    img:hover {
+      box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+    };') %>
  </p>
