@@ -47,6 +47,15 @@
     <%= form.submit %>
   </div>
 <% end %>
-
+  <p>Review list</p>
+  <% if @reviews != nil %>
+    <ul style="list-style-type:circle">
+      <% @reviews.each do |review| %>
+        <li style="margin-left: 1px">
+            <%= review.review %> (<i><%= review.user_id %></i>)
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
