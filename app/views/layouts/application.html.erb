@@ -7,13 +7,33 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+        img {
+          border-radius: 50%;
+        }
+    </style>
   </head>
     
   <body>
           <table>
         <tr>
             <% if user_signed_in? %>
-            <td>Welcome, <a href="/users/show.html"><%= current_user.email %></a></td>
+            <td>Welcome,
+            <%= image_tag(current_user.avatar, style: '
+                width:25px;height:25px;
+                img {
+                  border: 1px solid #ddd;
+                  border-radius: 4px;
+                  padding: 5px;
+                  width: 150px;
+                };
+                img:hover {
+                  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+                };
+                img {
+                  border-radius: 50%;
+                }') %>
+            <a href="/users/show.html"><%= current_user.email %></a></td>
             <td><%= button_to "Log Out", destroy_user_session_path, method: :delete  %></td>
             <% else %>
             <td>

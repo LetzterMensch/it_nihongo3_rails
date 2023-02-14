@@ -1,17 +1,61 @@
 <p id="notice"><%= notice %></p>
-
+<% book_review = BookReview.new %>
 <p>
   <strong>Title:</strong>
   <%= @book.title %>
 </p>
   <p>
-    <strong>Image:</strong>
-    <%= image_tag(@book.image, style: 'width:200px;height:150px') %>
+    <strong>Image:</strong><br>
+    <%= image_tag(@book.image, style: 'width:480px;height:480px') %>
   </p>
 <p>
   <strong>Number of pages:</strong>
   <%= @book.number_of_pages %>
 </p>
+<p>
+    <strong>Detail:</strong>
+    <%= @book.detail %>
+</p>
 
+<%= form_with(model: book_review, local: true) do |form| %>
+  <% if book_review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book_review.errors.count, "error") %> prohibited this book_review from being saved:</h2>
+
+      <ul>
+        <% book_review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="hidden_field">
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :book_id, :value => @book.id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :review %>
+    <%= form.text_area :review %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+  <a href="/book_reviews">Review list</a><p></p>
+  <% if @reviews != nil %>
+    <ul style="list-style-type:circle">
+      <% @reviews.each do |review| %>
+        <li style="margin-left: 1px">
+            <%= review.review %> (<i><%= review.user.name %></i>)
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

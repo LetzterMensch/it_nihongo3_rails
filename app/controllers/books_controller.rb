@@ -6,10 +6,12 @@ class BooksController < ApplicationController
   # GET /books or /books.json
   def index
     @books = Book.all
+    @reviews = BookReview.where(book_id: params[:id])
   end
 
   # GET /books/1 or /books/1.json
-  def show
+  def show()
+    @reviews = BookReview.where(book_id: params[:id])
   end
 
   # GET /books/new
@@ -67,6 +69,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title, :number_of_pages, :image)
+      params.require(:book).permit(:title, :number_of_pages, :image, :detail)
     end
 end
